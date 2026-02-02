@@ -1,6 +1,22 @@
 # 📧 Sitevision Contact Form WebApp
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat-square)](https://github.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)](package.json)
+
 En komplett kontaktformulär-modul för Sitevision WebApps2 med lagring av inlämningar.
+
+## 🎯 Vad är detta?
+
+Detta är ett **GitHub-repository** för **Sitevision Contact Form** - en produktionsklar WebApp2-modul för Sitevision CMS. Modulen tillhandahåller ett responsivt kontaktformulär med:
+
+- ✨ Modern React-baserad formulär
+- 💾 Automatisk lagring av inlämningar
+- 🔒 Inbyggt säkerhetsskydd (CSRF, validering, XSS-skydd)
+- 📊 Admin API för att hämta alla inlämningar
+- 🚀 Redo att deploya till Sitevision
+
+**Perfekt för:** Webbplatser, portal, intranät eller andra Sitevision-installationer som behöver ett kontaktformulär.
 
 ## ✨ Features
 
@@ -13,22 +29,40 @@ En komplett kontaktformulär-modul för Sitevision WebApps2 med lagring av inlä
 - ✅ **Modernt design** - Responsive CSS, bra UX
 - ✅ **Admin API** - Endpoint för att hämta alla inlämningar
 
-## 🚀 Installation
+## 🚀 Installation & Snabbstart
 
 ### 1. Krav
-- Node.js 14+ 
-- Sitevision 10.0+
-- Create Sitevision App CLI
+- **Node.js** 14+ 
+- **Sitevision** 10.0+
+- **Create Sitevision App CLI** (installeras via `npm install -g @sitevision/app-cli`)
 
-### 2. Setup
+### 2. Lokalt Setup
+
+Klona eller ladda ned detta repository och installera:
 
 ```bash
+# Klona repository
+git clone https://github.com/USERNAME/sitevision-contact-form.git
+cd sitevision-contact-form
+
 # Installera dependencies
 npm install
 
-# Build modulen
+# Build modulen för utveckling
 npm run build
+
+# Eller kör dev-server (om tillgängligt)
+npm run dev
 ```
+
+### 3. Verifiera Installation
+
+Efter build, kontrollera att `dist/`-mappen är skapad:
+```bash
+ls -la dist/
+```
+
+Du bör se byggda filer klara för deployment.
 
 ## 📁 Projektstruktur
 
@@ -157,30 +191,55 @@ npm run dev
 - ✅ **IP Logging**: IP-adress loggas för spårning
 - ✅ **Rate Limiting**: Kan implementeras på server om behövs
 
-## 📦 Deployment
+## 📦 Deployment till Sitevision
 
-### 1. Build production
+### Steg 1: Build Production-version
 ```bash
 npm run build
 ```
+Detta skapar en optimerad `dist/`-mapp.
 
-### 2. Package modulen
-Sitevision WebApps förväntar en ZIP-fil med:
-- `manifest.json`
-- `src/` mapp
-- `dist/` mapp (efter build)
+### Steg 2: Paketeras som ZIP
+Sitevision WebApps2 förväntar en ZIP-fil innehållande:
+```
+sitevision-contact-form.zip
+├── manifest.json           ← Modulkonfiguration
+├── package.json
+├── src/                    ← Source-kod
+│   ├── components/
+│   ├── index.js
+│   └── main.js
+└── dist/                   ← Byggda/kompilerade filer
+    └── (webpack output)
+```
 
-### 3. Deployer till Sitevision
+Skapa ZIP manuellt:
+```bash
+zip -r sitevision-contact-form.zip manifest.json package.json src/ dist/
+```
+
+### Steg 3: Importera till Sitevision Admin
+
+1. Logga in i **Sitevision Admin**
+2. Navigera till **Moduler** → **WebApps2**
+3. Klicka **+ Importera modul** eller **Import**
+4. Välj `sitevision-contact-form.zip`
+5. Bekräfta och vänta på import
+6. Modulen är nu tillgänglig för konfiguration
+
+### Steg 4: Konfiguration i Sitevision
+
+Efter import kan du:
+- **Placera formuläret** på en sida via komponenten
+- **Ställa in åtkomsträttigheter** (vilka roller som ser formuläret)
+- **Konfigurera e-post-notifikationer** (valfritt)
+- **Hämta inlämningar** via Admin API-endpoint
+
+### Automatisk Deploy (om CI/CD är konfigurerat)
 ```bash
 npm run deploy
 ```
-
-Or manuellt via Sitevision Admin:
-1. Gå till **Modules** → **Web Apps**
-2. Klicka **Import Module**
-3. Välj ZIP-filen
-4. Konfigurера modulen
-5. Aktivera och placera på sida
+(Kräver GitHub Actions eller liknande setup)
 
 ## 🔐 Konfiguration i Sitevision
 
@@ -213,9 +272,33 @@ Efter deployment kan administratören:
 - [React Documentation](https://react.dev)
 - [Sitevision KeyValueDataStore](https://developer.sitevision.se/docs/webapps/sdk/storage)
 
+## 🤝 Bidra (Contributing)
+
+Vill du förbättra modulen? Du är välkommen att:
+
+1. **Fork** detta repository
+2. Skapa en feature-branch: `git checkout -b feature/din-feature`
+3. Gör dina ändringar och commita: `git commit -m "Add: beskrivning av feature"`
+4. Push till branchen: `git push origin feature/din-feature`
+5. Öppna en **Pull Request** med en beskrivning
+
+### Regler för bidrag
+- Följ befintlig kod-stil
+- Testa dina ändringar lokalt med `npm run build`
+- Uppdatera README.md om du ändrar funktionalitet
+- Skapa tydliga commit-meddelanden på svenska
+
+## 💬 Support & Kontakt
+
+Har du frågor eller hittat en bugg?
+
+- **Issues:** [Öppna ett GitHub Issue](https://github.com/USERNAME/sitevision-contact-form/issues)
+- **Diskussioner:** [GitHub Discussions](https://github.com/USERNAME/sitevision-contact-form/discussions)
+- **Sitevision Support:** [Developer Portal](https://developer.sitevision.se)
+
 ## 📄 Licens
 
-MIT
+MIT - Se LICENSE-filen för detaljer
 
 ## 👨‍💻 Utvecklare
 
@@ -225,5 +308,6 @@ Sitevision Developer Team
 
 ---
 
-**Senaste uppdatering:** 2024-02-02  
-**Status:** ✅ Production Ready
+**Senaste uppdatering:** 2026-02-02  
+**Status:** ✅ Production Ready  
+**GitHub:** https://github.com/USERNAME/sitevision-contact-form
