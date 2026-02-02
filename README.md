@@ -29,7 +29,36 @@ Detta är ett **GitHub-repository** för **Sitevision Contact Form** - en produk
 - ✅ **Modernt design** - Responsive CSS, bra UX
 - ✅ **Admin API** - Endpoint för att hämta alla inlämningar
 
+## ⚡ QUICK START - För omedelbar deployment
+
+**Redan byggd och redo att deploy?** Ladda ned den färdiga modulen direkt:
+
+### 📥 Snabbinstallation för Sitevision Admin
+
+1. **Ladda ned dist-ZIP-filen:**
+   - 📦 [sitevision-contact-form-dist.zip](https://YOUR_FILE_SERVER/sitevision-contact-form-dist.zip) (16 KB)
+   - Eller använd File Transfer Service direkt
+
+2. **Importera till Sitevision:**
+   ```
+   Sitevision Admin → Moduler → WebApps2 → Importera modul
+   Välj: sitevision-contact-form-dist.zip
+   Klicka: Deploy
+   ✅ Modulen är live!
+   ```
+
+3. **Placera på sida:**
+   ```
+   Sitevision Page Editor → Lägg till komponent → Sitevision Contact Form
+   ```
+
+**Klart!** Formuläret är nu live och tar emot inlämningar.
+
+---
+
 ## 🚀 Installation & Snabbstart
+
+### För utvecklare: Lokal installation
 
 ### 1. Krav
 - **Node.js** 14+ 
@@ -193,49 +222,74 @@ npm run dev
 
 ## 📦 Deployment till Sitevision
 
-### Steg 1: Build Production-version
+### ✅ Redan redo! Använd den färdiga ZIP-filen
+
+**sitevision-contact-form-dist.zip** innehåller:
+- ✨ `index.js` (36.5 KB) - Server-side rendering bundle
+- ✨ `main.js` (3.4 KB) - Client-side bundle
+- ✨ `css/main.css` - Formulär-styling
+- ✨ `manifest.json` - WebApp-konfiguration
+
+**Ingen ytterligare build behövs!**
+
+### Steg-för-steg deployment till Sitevision Admin
+
+#### 1️⃣ Ladda ned ZIP-filen
+```
+Källa: File Transfer Service eller GitHub Releases
+Fil: sitevision-contact-form-dist.zip
+Storlek: ~16 KB (komprimerad)
+```
+
+#### 2️⃣ Öppna Sitevision Admin och navigera till WebApps2
+```
+Sitevision Admin → Moduler → WebApps2
+```
+
+#### 3️⃣ Importera modulen
+```
+Klicka: "Importera modul" eller "Import WebApp"
+Välj fil: sitevision-contact-form-dist.zip
+Bekräfta import
+Vänta på meddelandet "Modulen är installerad"
+```
+
+#### 4️⃣ Placera formuläret på en sida
+```
+1. Öppna sidan i Page Editor
+2. Lägg till komponent
+3. Välj: "Sitevision Contact Form"
+4. Spara sidan
+✅ Formuläret är nu live!
+```
+
+#### 5️⃣ (Valfritt) Hämta inlämningar
+```
+Admin API: GET /api/contact/submissions
+Denna endpoint returnerar alla inlämningar som JSON
+```
+
+### För utvecklare: Rebuild från källkod
+
+Vill du modifiera koden? Gör så här:
+
 ```bash
+# Klona och installera
+git clone https://github.com/tobiassved/sitevision-contact-form.git
+cd sitevision-contact-form
+npm install
+
+# Gör dina ändringar i src/
+# (modifiera App.jsx, ContactForm.jsx, etc.)
+
+# Bygg den nya ZIP-filen
 npm run build
-```
-Detta skapar en optimerad `dist/`-mapp.
 
-### Steg 2: Paketeras som ZIP
-Sitevision WebApps2 förväntar en ZIP-fil innehållande:
-```
-sitevision-contact-form.zip
-├── manifest.json           ← Modulkonfiguration
-├── package.json
-├── src/                    ← Source-kod
-│   ├── components/
-│   ├── index.js
-│   └── main.js
-└── dist/                   ← Byggda/kompilerade filer
-    └── (webpack output)
+# ZIP-filen skapas automatiskt i dist/
+# Upload den nya ZIP:en till Sitevision
 ```
 
-Skapa ZIP manuellt:
-```bash
-zip -r sitevision-contact-form.zip manifest.json package.json src/ dist/
-```
-
-### Steg 3: Importera till Sitevision Admin
-
-1. Logga in i **Sitevision Admin**
-2. Navigera till **Moduler** → **WebApps2**
-3. Klicka **+ Importera modul** eller **Import**
-4. Välj `sitevision-contact-form.zip`
-5. Bekräfta och vänta på import
-6. Modulen är nu tillgänglig för konfiguration
-
-### Steg 4: Konfiguration i Sitevision
-
-Efter import kan du:
-- **Placera formuläret** på en sida via komponenten
-- **Ställa in åtkomsträttigheter** (vilka roller som ser formuläret)
-- **Konfigurera e-post-notifikationer** (valfritt)
-- **Hämta inlämningar** via Admin API-endpoint
-
-### Automatisk Deploy (om CI/CD är konfigurerat)
+### Automatisk Deploy (CI/CD - om konfigurerat)
 ```bash
 npm run deploy
 ```
@@ -244,10 +298,21 @@ npm run deploy
 ## 🔐 Konfiguration i Sitevision
 
 Efter deployment kan administratören:
-1. Ställa in vilka roller som kan se formuläret
-2. Konfigurera e-post-notifikationer
-3. Hämta alla inlämningar via `/api/contact/submissions`
-4. Exportera data för analys
+1. **Ställa in vilka roller som kan se formuläret** via komponenten
+2. **Konfigurera e-post-notifikationer** (valfritt) via WebApp-inställningar
+3. **Hämta alla inlämningar** via `/api/contact/submissions` endpoint
+4. **Exportera data** för analys eller backups
+
+### Hitta Admin API:n
+```
+Sitevision Admin → Moduler → Sitevision Contact Form → Inställningar
+API URL: /api/contact/submissions (GET)
+```
+
+Eller direkt i webbläsaren (som admin):
+```
+https://your-sitevision-domain.com/api/contact/submissions
+```
 
 ## 🐛 Troubleshooting
 
