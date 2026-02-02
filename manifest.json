@@ -1,0 +1,24 @@
+{
+  "id": "contactForm",
+  "version": "1.0.0",
+  "type": "WebApp",
+  "name": {
+    "sv": "Kontaktformulär",
+    "en": "Contact Form"
+  },
+  "description": {
+    "sv": "Ett enkelt kontaktformulär med lagring av inlämningar",
+    "en": "A simple contact form with submission storage"
+  },
+  "author": "Sitevision Developer",
+  "helpUrl": "https://developer.sitevision.se",
+  "bundled": true,
+  "maxUploadSizeInMB": 16,
+  "storage": {
+    "keyValueDataStore": "contactSubmissions"
+  },
+  "requiredLibs": {
+    "react": "17.0.2"
+  },
+  "csrfProtection": true
+}
